@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 import okhttp3.internal.notifyAll
 
 class StudenViewModel : ViewModel() {
-    private val studentUseCase = StundentUseCase(StudentRepositoryImpl())
+    private val studentUseCase = StundentUseCase()
     var mLiveData = MutableLiveData<List<Student>>()
     fun getStudent() = studentUseCase.getStubStudent()
 

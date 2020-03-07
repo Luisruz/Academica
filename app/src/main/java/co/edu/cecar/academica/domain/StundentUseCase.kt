@@ -1,11 +1,13 @@
 package co.edu.cecar.academica.domain
 
-import co.edu.cecar.academica.data.StudentRepositoryImpl
 import co.edu.cecar.academica.presentation.model.Student
 import io.reactivex.Observable
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class StundentUseCase ( val studentRepository: StudentRepository) {
+class StundentUseCase: KoinComponent {
+    val repository:StudentRepository by inject()
     fun getStubStudent(): Observable<List<Student>> {
-        return studentRepository.getStubStudent()
+        return repository.getStubStudent()
     }
 }
