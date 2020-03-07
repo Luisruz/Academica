@@ -1,5 +1,7 @@
 package co.edu.cecar.academica.presentation
 
+import android.app.Application
+import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,6 +24,16 @@ class StudenViewModel : ViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 mLiveData.value = it
+            }, {
+                val error = it
+            })
+    }
+    fun getStudentForLocalDatabase(){
+        studentUseCase.getStudentsForLocalDatabase()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                val data = it
             }, {
                 val error = it
             })
